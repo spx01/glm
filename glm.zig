@@ -1,1 +1,1 @@
-export usingnamespace @import("./src/main.zig");
+usingnamespace @import("./src/main.zig");
