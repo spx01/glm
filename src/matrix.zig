@@ -3,7 +3,7 @@ const math = std.math;
 const testing = std.testing;
 
 pub fn Matrix(comptime N: usize) type {
-  return packed struct {
+  return struct {
     const Self = @This();
     pub const Scalar = f32;
 
@@ -40,13 +40,7 @@ pub fn Matrix(comptime N: usize) type {
       while (i < N) : (i += 1) {
         comptime var j = 0;
         while (j < N) : (j += 1) {
-          result.values[i][j] = brk: {
-            if (i == j) {
-              break :brk 1;
-            } else {
-              break :brk 0;
-            }
-          };
+          result.values[i][j] = if (i == j) 1 else 0;
         }
       }
 
